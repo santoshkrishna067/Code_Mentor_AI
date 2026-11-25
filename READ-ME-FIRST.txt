@@ -1,0 +1,30 @@
+CODE MENTOR AI - EASY STEPS
+
+FIRST TIME ONLY
+1. Open this folder in VS Code (File > Open Folder).
+2. Open a terminal (Terminal > New Terminal) and run:
+      Set-ExecutionPolicy -Scope Process Bypass
+      .\SETUP.ps1
+   Nothing to paste: the .env files are already included. Wait until it says Done.
+
+CAMERA PROCTORING (once, after SETUP.ps1)
+   .\proctoring-service\copy-models.ps1
+   (copies the two big model files from the proctoring project you downloaded; if it is not in
+    D:\Downloads, add  -Source "<folder that contains shape_predictor_model>")
+   To test your camera on its own:  cd proctoring-service; .\venv\Scripts\python.exe live_preview.py
+
+EVERY TIME
+      Set-ExecutionPolicy -Scope Process Bypass
+      .\START.ps1
+   Windows open for the backend, the frontend and the camera service, and the site opens at http://localhost:5173
+
+MAKE YOURSELF ADMIN (once, after you register on the site)
+      cd backend
+      npm run make-admin -- your@email.com
+
+If MongoDB says "Server selection timeout": Atlas > Network Access > add your IP.
+
+UPDATING TO A NEWER VERSION
+1. Close the two server windows.
+2. Unzip the new zip over the old folder (choose "Replace files").
+3. In the VS Code terminal:   .\UPDATE.ps1      then      .\START.ps1
